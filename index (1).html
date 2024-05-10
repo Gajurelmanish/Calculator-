@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Simple calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    
+    .calculator {
+      width: 300px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgb(0, 0, 0‚ 0.2)
+    }
+    
+    button {
+      font-size: 15px;
+      margin: 5px;
+      width: 48px;
+      height: 48px;
+      
+    }
+    
+    input {
+        width: 100%;
+        padding: 5px;
+        margin-bottom: 10px;
+        font-size: 24px;
+    }
+   
+  </style>
+
+</head>
+
+<body>
+  <div class="calculator">
+    <input type="text" disabled>
+    <div>
+       <button onclick="append('7')">7</button>
+       <button onclick="append('8')">8</button>
+       <button onclick="append('9')">9</button>
+       <button onclick="clearinput()">C</button>
+    </div>
+        <div>
+       <button onclick="append('4')">4</button>
+       <button onclick="append('5')">5</button>
+       <button onclick="append('6')">6</button>
+       <button onclick="append('+')">+</button>
+    </div>
+        <div>
+       <button onclick="append('1')">1</button>
+       <button onclick="append('2')">2</button>
+       <button onclick="append('3')">3</button>
+       <button onclick="append('-')">-</button>
+    </div>
+    <div>
+      <button onclick="append('0')">0</button>
+      <button onclick="append('×')">×</button>
+      <button onclick="append('÷')">÷</button>
+      <button onclick="calc('=')">=</button>
+    </div>
+  </div>
+  
+      <script defer>
+   
+    const input = document.querySelector('input')
+    //console.log(input)
+    var currentEquation = ""
+    
+    function clearinput() {
+      input.value = ""
+      currentEquation = ""
+    }
+    
+    function append(text) {
+      currentEquation += text
+      input.value = currentEquation
+    }
+     
+     function calc() {
+       try {
+         var res = eval(currentEquation)
+         input.value = res
+         currentEquation = res
+       } catch (error) {
+         console.error(error)
+         input.value = "Error!!"
+         
+       }
+     }
+    
+  </script>
+  
+</body>
+
+
+</html>
